@@ -1,0 +1,19 @@
+C++ smart pointers:
+- Unique pointer
+- Shared pointer
+- Weak pointer
+
+Only ensure call to delete when last smart pointer is no longer used.
+But do not avoid memory leak in general:
+
+Other cause of memory leak:
+- Long life container that store objects no longer used
+- Object that is no longer required by the application but still reference somewhere by some smartpointer
+
+New schema of smart pointers:
+- Owner pointer
+- Reference pointer
+
+The owner decides of the beginning and end of life of the object. Others only have reference to it.
+When owner delete the object, an exception is thrown if others still have refernce to it.
+Others cannot delete the object.
